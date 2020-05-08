@@ -5,10 +5,12 @@ services:
     command: [
             "./code/ddns-do.py",
             "--digital-ocean-auth-token",
-            "REPLACE-WITH-YOUR-DIGITAL-OCEAN-TOKEN",
+            "${DIGITAL_OCEAN_TOKEN}",
             "--check-interval",
             "300",
             "--domain",
             "myhost.domain.net",
+            "--domain",
+            "myhost1.domain.net",
             "--domain",
             "myhost2.domain.net"]

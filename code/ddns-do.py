@@ -30,7 +30,7 @@ def run(check_interval,
             ip = _get_ip()
             tld, subdomain = _extract_domain_and_subdomain(d)
             _set_dns(tld, subdomain, ip, digital_ocean_auth_token)
-            time.sleep(check_interval)
+        time.sleep(check_interval)
 
 
 def _get_ip():

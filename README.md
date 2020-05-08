@@ -12,8 +12,8 @@ Run on a Docker host in your home :)
 
 ### Docker Compose
 
-Update docker compose with your Digital Token and your domains to keep up to date.
+Update docker compose with your your domains to keep up to date.
 
 ```
-docker-compose up -d
+export DIGITAL_OCEAN_TOKEN=mytokenhere; docker-compose up -d
 ```
