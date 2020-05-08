@@ -16,4 +16,5 @@ Update docker compose with your your domains to keep up to date.
 
 ```
 export DIGITAL_OCEAN_TOKEN=mytokenhere; docker-compose up -d
+docker-compose logs -f
 ```
