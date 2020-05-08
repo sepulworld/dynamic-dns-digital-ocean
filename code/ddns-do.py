@@ -26,9 +26,9 @@ def run(check_interval,
         domain):
     """Run process to monitor and update DNS"""
     while True:
+        ip = _get_ip()
         logging.info(f'current system public IP: {ip}')
         for d in domain:
-            ip = _get_ip()
             tld, subdomain = _extract_domain_and_subdomain(d)
             _set_dns(tld, subdomain, ip, digital_ocean_auth_token)
         time.sleep(check_interval)
