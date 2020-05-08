@@ -4,6 +4,10 @@ This file is used to list changes made in each version of dynamic-dns-digital-oc
 
 ## unreleased
 
+## 0.1.5 (2020-05-08)
+- [Zane Williamson]
+  - clarify logging output 
+
 ## 0.1.4 (2020-05-08)
 - [Zane Williamson]
   - fixing logger warning deprication 

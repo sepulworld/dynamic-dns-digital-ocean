@@ -34,15 +34,15 @@ def run(check_interval,
         ip = _get_ip()
 
         if known_ip is None or ip != known_ip:
-            logging.info(f'known system public IP: {known_ip}')
-            logging.warning(f'detected system public IP: {ip}')
+            logging.info(f'system public IP: {known_ip}')
+            logging.warning(f'detected new system public IP: {ip}')
             for d in domain:
                 tld, subdomain = _extract_domain_and_subdomain(d)
                 _set_dns(tld, subdomain, ip, digital_ocean_auth_token)
             known_ip = ip
         else:
             known_ip = ip
-            logging.info(f'known system public IP : {known_ip}')
+            logging.info(f'system public IP : {known_ip}')
 
         time.sleep(check_interval)
 
