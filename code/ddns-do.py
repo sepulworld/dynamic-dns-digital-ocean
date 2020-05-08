@@ -9,7 +9,9 @@ import time
 import tldextract
 
 AUTH_TOKEN = os.environ.get("DIGITAL_OCEAN_AUTH_TOKEN", "")
-logging.basicConfig(level=logging.INFO)
+LOGLEVEL = os.environ.get('LOGLEVEL', 'WARNING').upper()
+
+logging.basicConfig(level=LOGLEVEL)
 
 
 @click.command()
