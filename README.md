@@ -1,13 +1,13 @@
 # dynamic-dns-digital-ocean
 
-Simple Docker supported dynamic DNS updater for DNS hosted on Digital Ocean 
+Simple dynamic DNS updater for DNS hosted on Digital Ocean 
 
-Run on a Docker host in your home :)
+Designed to run on a Docker host at home.
 
 ### Requirements
 
 * Digital Ocean API Token
-* Your domain's name server must be pointing to Digital Ocean NS for your domain
+* Your domain's name server must be pointing to Digital Ocean
 
 
 ### Docker Compose
