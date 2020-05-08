@@ -26,6 +26,7 @@ def run(check_interval,
         domain):
     """Run process to monitor and update DNS"""
     while True:
+        logging.info(f'current system public IP: {ip}')
         for d in domain:
             ip = _get_ip()
             tld, subdomain = _extract_domain_and_subdomain(d)
@@ -36,7 +37,6 @@ def run(check_interval,
 def _get_ip():
     """Fetch my IP address as seen from outside world"""
     ip = requests.get("https://api.ipify.org/?format=json").json()['ip']
-    logging.info(f'current system public IP: {ip}')
     return ip
 
 
@@ -55,7 +55,7 @@ def _set_dns(tld, subdomain, ip, token):
     records = domain.get_records()
     for r in records:
         if r.name == subdomain:
-            logging.info(f"Updating {subdomain} to {ip}")
+            logging.info(f"Updating {subdomain}.{tld} to {ip}")
             r.data = ip
             r.ttl = 60
             r.save()
