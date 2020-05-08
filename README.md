@@ -7,7 +7,7 @@ Run on a Docker host in your home :)
 ### Requirements
 
 * Digital Ocean API Token
-* Your domain's name server must be pointing to Digital Ocean NS for your domain
+* Your domain's name server must be pointing to Digital Ocean
 
 
 ### Docker Compose
