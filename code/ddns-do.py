@@ -70,13 +70,13 @@ def _set_dns(tld, subdomain, ip, token):
     records = domain.get_records()
     for r in records:
         if r.name == subdomain:
-            logging.info(f"Updating {subdomain}.{tld} to {ip}")
+            logging.warning(f"Updating {subdomain}.{tld} to {ip}")
             r.data = ip
             r.ttl = 60
             r.save()
             break
     else:
-        logging.info(f"Creating new {subdomain} with A: {ip}")
+        logging.warning(f"Creating new {subdomain} with A: {ip}")
         domain.create_new_domain_record(
             type='A',
             name=subdomain,

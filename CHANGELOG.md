@@ -4,6 +4,10 @@ This file is used to list changes made in each version of dynamic-dns-digital-oc
 
 ## unreleased
 
+## 0.1.7 (2020-05-08)
+- [Zane Williamson]
+  - warning loglevel for actions that change DNS 
+
 ## 0.1.6 (2020-05-08)
 - [Zane Williamson]
   - Configurable loglevel via env, docs
