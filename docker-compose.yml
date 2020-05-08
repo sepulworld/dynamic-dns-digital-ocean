@@ -1,7 +1,8 @@
-version: "3.8"
+version: "2"
 services:
   dynamic-dns:
     image: dynamic-dns-digital-ocean:latest
+    restart: always
     command: [
             "./code/ddns-do.py",
             "--digital-ocean-auth-token",

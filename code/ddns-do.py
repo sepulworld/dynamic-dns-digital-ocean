@@ -24,13 +24,26 @@ logging.basicConfig(level=logging.INFO)
 def run(check_interval,
         digital_ocean_auth_token,
         domain):
-    """Run process to monitor and update DNS"""
+    """
+    Run process to monitor and update DNS.
+    Update only if current_ip isn't known yet, or different from
+    gathered IP
+    """
+    known_ip = None
     while True:
         ip = _get_ip()
-        logging.info(f'current system public IP: {ip}')
-        for d in domain:
-            tld, subdomain = _extract_domain_and_subdomain(d)
-            _set_dns(tld, subdomain, ip, digital_ocean_auth_token)
+
+        if known_ip is None or ip != known_ip:
+            logging.info(f'known system public IP: {known_ip}')
+            logging.warn(f'detected system public IP: {ip}')
+            for d in domain:
+                tld, subdomain = _extract_domain_and_subdomain(d)
+                _set_dns(tld, subdomain, ip, digital_ocean_auth_token)
+            known_ip = ip
+        else:
+            known_ip = ip
+            logging.info(f'known system public IP : {known_ip}')
+
         time.sleep(check_interval)
 
 
