@@ -4,6 +4,10 @@ This file is used to list changes made in each version of dynamic-dns-digital-oc
 
 ## unreleased
 
+## 0.1.4 (2020-05-08)
+- [Zane Williamson]
+  - fixing logger warning deprication 
+
 ## 0.1.3 (2020-05-07)
 - [Zane Williamson]
   - reduce number of digital ocean api calls 
