@@ -2,12 +2,14 @@
 
 import click
 import digitalocean
+import logging
 import requests
 import os
 import time
 import tldextract
 
 AUTH_TOKEN = os.environ.get("DIGITAL_OCEAN_AUTH_TOKEN", "")
+logging.basicConfig(level=logging.INFO)
 
 
 @click.command()
@@ -26,7 +28,6 @@ def run(check_interval,
     while True:
         for d in domain:
             ip = _get_ip()
-            print(ip)
             tld, subdomain = _extract_domain_and_subdomain(d)
             _set_dns(tld, subdomain, ip, digital_ocean_auth_token)
             time.sleep(check_interval)
@@ -35,6 +36,7 @@ def run(check_interval,
 def _get_ip():
     """Fetch my IP address as seen from outside world"""
     ip = requests.get("https://api.ipify.org/?format=json").json()['ip']
+    logging.info(f'current system public IP: {ip}')
     return ip
 
 
@@ -53,13 +55,13 @@ def _set_dns(tld, subdomain, ip, token):
     records = domain.get_records()
     for r in records:
         if r.name == subdomain:
-            print(f"Updating {subdomain} to {ip}")
+            logging.info(f"Updating {subdomain} to {ip}")
             r.data = ip
             r.ttl = 60
             r.save()
             break
     else:
-        print(f"Creating new {subdomain} with A: {ip}")
+        logging.info(f"Creating new {subdomain} with A: {ip}")
         domain.create_new_domain_record(
             type='A',
             name=subdomain,

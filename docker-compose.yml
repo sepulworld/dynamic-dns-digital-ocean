@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  dynamic-dns:
+    image: dynamic-dns-digital-ocean:latest
+    command: [
+            "./code/ddns-do.py",
+            "--digital-ocean-auth-token",
+            "REPLACE-WITH-YOUR-DIGITAL-OCEAN-TOKEN",
+            "--check-interval",
+            "300",
+            "--domain",
+            "myhost.domain.net",
+            "--domain",
+            "myhost2.domain.net"]

@@ -12,7 +12,7 @@ Run on a Docker host in your home :)
 
 ### Docker Compose
 
-Update docker compose with your Digital Token and run
+Update docker compose with your Digital Token and your domains to keep up to date.
 
 ```
 docker-compose up -d
