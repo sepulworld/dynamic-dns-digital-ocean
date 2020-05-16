@@ -23,8 +23,8 @@ docker-compose logs -f
 
 #### Environment Variables
 
-`DIGITAL_OCEAN_TOKEN` default ""
-`LOGLEVEL` default "WARNING"
+`DIGITAL_OCEAN_TOKEN=""`
+`LOGLEVEL="WARNING"`
 
 #### CLI Variables
 
