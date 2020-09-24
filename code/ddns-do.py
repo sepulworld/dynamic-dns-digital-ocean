@@ -1,6 +1,7 @@
 #!/usr/bin/env python
+from typing import List, Optional
 
-import click
+import typer
 import digitalocean
 import logging
 import requests
@@ -14,24 +15,20 @@ LOGLEVEL = os.environ.get('LOGLEVEL', 'WARNING').upper()
 logging.basicConfig(level=LOGLEVEL)
 
 
-@click.command()
-@click.option('--check-interval', '-i', default=300)
-@click.option('--domain', '-d', multiple=True, required=True)
-@click.option(
-    '--digital-ocean-auth-token',
-    '-t',
-    default=AUTH_TOKEN,
-    required=True
-)
-def run(check_interval,
-        digital_ocean_auth_token,
-        domain):
+def run(check_interval: int = 300,
+        digital_ocean_auth_token: str = None,
+        domain: Optional[List[str]] = typer.Option(None)):
     """
     Run process to monitor and update DNS.
     Update only if current_ip isn't known yet, or different from
     gathered IP
     """
     known_ip = None
+
+    if not domain:
+        typer.echo("No domains provided")
+        raise typer.Abort()
+
     while True:
         ip = _get_ip()
 
@@ -85,4 +82,4 @@ def _set_dns(tld, subdomain, ip, token):
 
 
 if __name__ == '__main__':
-    run()
+    typer.run(run)
