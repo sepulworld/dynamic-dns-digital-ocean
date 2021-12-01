@@ -18,6 +18,12 @@ Update docker compose with your your domains to keep up to date.
 export DIGITAL_OCEAN_TOKEN=mytokenhere; docker-compose up -d
 docker-compose logs -f
 ```
+Or save in `.env` file in same directory as your docker-compose.yml and docker-compose will load for you
+
+```
+cat .env
+DIGITAL_OCEAN_TOKEN=mytokenhere
+```
 
 ### Variables
 
